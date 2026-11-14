@@ -9,6 +9,8 @@ import * as THREE from 'three'
 
 const canvas = document.getElementById('c')
 const yawReadout = document.getElementById('yaw-readout')
+canvas.focus()
+canvas.addEventListener('pointerdown', () => canvas.focus())
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
