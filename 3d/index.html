@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>서울아바타 · 최소 3D 도로</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/minimal-road/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="c" tabindex="0" aria-label="Minimal 3D road walk"></canvas>
+      <header class="hud top">
+        <div class="brand">
+          <span class="mark">서울아바타</span>
+          <span class="sub">최소 3D · 도로 + 사람</span>
+        </div>
+        <div class="meta" id="pos-readout">pos —</div>
+      </header>
+      <footer class="hud bottom">
+        <p>WASD 이동 · 마우스 드래그로 시점</p>
+        <p class="hint">저폴리 메시 슬라이스 · 존 스트리밍 훅만 준비</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/minimal-road/main.js"></script>
+  </body>
+</html>
