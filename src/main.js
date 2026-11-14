@@ -26,14 +26,6 @@ const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerH
 camera.rotation.order = 'YXZ'
 camera.position.set(0, 0, 0)
 
-const loader = new THREE.TextureLoader()
-const texture = await loader.loadAsync('/hongdae-equirect.jpg')
-texture.colorSpace = THREE.SRGBColorSpace
-texture.mapping = THREE.EquirectangularReflectionMapping
-texture.minFilter = THREE.LinearMipmapLinearFilter
-texture.magFilter = THREE.LinearFilter
-scene.background = texture
-
 // lon/lat in radians. lon=0 → equirect center (시안 forward stamp).
 // Three.js equirectUv uses atan(z,x): default look (-Z) samples u=0.25, while
 // our stamp sits at u=0.5. Empirically camera.y = 3π/2 faces the stamp.
@@ -82,7 +74,6 @@ canvas.addEventListener('pointermove', (e) => {
   const dy = e.clientY - pointer.y
   pointer.x = e.clientX
   pointer.y = e.clientY
-  // drag right → look right (decrease yaw in Three Y-up CCW convention? drag right = see left content)
   look.targetLon -= dx * pointer.sens
   look.targetLat -= dy * pointer.sens
 })
@@ -133,9 +124,6 @@ function tick() {
   requestAnimationFrame(tick)
 }
 
-applyLook()
-tick()
-
 window.__hongdae360 = {
   setLook(lonDeg, latDeg = 0) {
     const lon = THREE.MathUtils.degToRad(lonDeg)
@@ -173,3 +161,22 @@ window.__hongdae360 = {
     })
   },
 }
+
+new THREE.TextureLoader().load(
+  '/hongdae-equirect.jpg',
+  (texture) => {
+    texture.colorSpace = THREE.SRGBColorSpace
+    texture.mapping = THREE.EquirectangularReflectionMapping
+    texture.minFilter = THREE.LinearMipmapLinearFilter
+    texture.magFilter = THREE.LinearFilter
+    scene.background = texture
+    applyLook()
+    tick()
+  },
+  undefined,
+  (err) => {
+    console.error('Failed to load hongdae-equirect.jpg', err)
+    applyLook()
+    tick()
+  },
+)
