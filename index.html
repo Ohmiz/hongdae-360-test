@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>홍대 360° · 서울아바타 fidelity test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="c"></canvas>
+      <header class="hud top">
+        <div class="brand">
+          <span class="mark">서울아바타</span>
+          <span class="sub">Hongdae 360° fidelity test</span>
+        </div>
+        <div class="meta" id="yaw-readout">yaw 0°</div>
+      </header>
+      <footer class="hud bottom">
+        <p>드래그 / 터치 / ← → ↑ ↓ · 시안 전방 FOV ≈ 80°</p>
+        <p class="hint">좌·우·뒤는 합성 확장 · 워크어블 오픈월드 아님</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

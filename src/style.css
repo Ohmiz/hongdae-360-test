@@ -1,0 +1,104 @@
+:root {
+  --ink: #1a1614;
+  --fog: rgba(18, 16, 14, 0.55);
+  --paper: #f4efe8;
+  --neon: #ff6b7a;
+  --mint: #7ec8b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 0%, #2a3340 0%, transparent 55%),
+    linear-gradient(180deg, #14181e 0%, #0c0e12 100%);
+  color: var(--paper);
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#c {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+#c:active {
+  cursor: grabbing;
+}
+
+.hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  padding: 1rem 1.25rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+.hud.top {
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(180deg, var(--fog), transparent);
+}
+
+.hud.bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, var(--fog), transparent);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mark {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  color: var(--mint);
+}
+
+.meta {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.hint {
+  opacity: 0.7;
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 640px) {
+  .hud {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .mark {
+    font-size: 1rem;
+  }
+}
